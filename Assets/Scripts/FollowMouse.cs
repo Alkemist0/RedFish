@@ -5,7 +5,7 @@ public class FollowMouse : MonoBehaviour
     public GameManager GameManager;
     private Vector2 endPos;
     private Vector2 startPos;
-    private float desiredLength = 2f;
+    private float desiredLength = 0.5f;
     private float elapsedTime;
 
     [SerializeField]

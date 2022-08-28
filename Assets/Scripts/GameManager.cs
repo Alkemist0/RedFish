@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
 
     public void Lose()
     {
-        Time.timeScale = 0;
         LoseScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Win()
