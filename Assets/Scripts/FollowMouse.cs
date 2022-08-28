@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FollowMouse : MonoBehaviour
 {
+    public GameManager GameManager;
     private Vector2 endPos;
     private Vector2 startPos;
     private float desiredLength = 2f;
@@ -44,6 +45,12 @@ public class FollowMouse : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameManager.Lose();
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameManager.Win();
     }
 }

@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int aliveFish;
+
+    public GameObject LoseScreen;
+    public GameObject WinScreen;
+
+    public TextMeshProUGUI WinText;
+
+    private void Awake()
     {
-        
+        aliveFish = 14;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeScene(int id)
     {
-        
+        Time.timeScale = 1;
+        SceneManager.LoadScene(id);
+    }
+
+    public void Lose()
+    {
+        Time.timeScale = 0;
+        LoseScreen.SetActive(true);
+    }
+
+    public void Win()
+    {
+        WinText.text = "You finished with " + aliveFish + " Blue Fish!";
+        WinScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 }

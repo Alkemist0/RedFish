@@ -4,7 +4,7 @@ public class Fish : MonoBehaviour
 {
     public bool isRed;
 
-    GameObject redFish;
+    public GameManager GameManager;
     private GameObject target;
 
     private bool reachedDestination = true;
@@ -19,16 +19,12 @@ public class Fish : MonoBehaviour
 
     private void Awake()
     {
-        redFish = GameObject.FindGameObjectWithTag("RedFish");
-
         if(!isRed)
         {
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Target").Length; i++)
             {
                 if (GameObject.FindGameObjectsWithTag("Target")[i].name == gameObject.name) target = GameObject.FindGameObjectsWithTag("Target")[i];
             }
-
-            Debug.Log(target);
         }
     }
 
@@ -61,6 +57,7 @@ public class Fish : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameManager.aliveFish--;
         Destroy(gameObject);
     }
 }
